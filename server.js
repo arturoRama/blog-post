@@ -27,7 +27,7 @@ let blogArray=[
 					publishDate: "14-12-2014"
 				}];
 
-app.get('/blog-posts', (req,res,next) => {
+app.get('/blog-posts', (req,res) => {
 	res.status(200).json({
 		message : "Successfully sent all the blogs",
 		status : 200,
@@ -35,7 +35,7 @@ app.get('/blog-posts', (req,res,next) => {
 	});
 });
 
-app.get('/blog-posts/:author', (req,res,next) => {
+app.get('/blog-posts/:author', (req,res) => {
 
 	if(!('author' in req.params)){
 		res.status(406).json({
@@ -70,7 +70,7 @@ app.get('/blog-posts/:author', (req,res,next) => {
 	}
 });
 
-app.post('/blog-posts', jsonParser, (req,res,next) => {
+app.post('/blog-posts', jsonParser, (req,res) => {
 	let requiredFields = ['title','content','author','publishDate'];
 
 	for(let i = 0; i < requiredFields.length; i++){
@@ -98,7 +98,7 @@ app.post('/blog-posts', jsonParser, (req,res,next) => {
 	});
 });
 
-app.delete('/blog-posts/:id', jsonParser, (req,res,next) => {
+app.delete('/blog-posts/:id', jsonParser, (req,res) => {
 
 	if (!('id' in req.params))
 	{
@@ -143,7 +143,7 @@ app.delete('/blog-posts/:id', jsonParser, (req,res,next) => {
 	}).send("");
 });
 
-app.put('/blog-posts/:id', jsonParser, (req,res,next) => {
+app.put('/blog-posts/:id', jsonParser, (req,res) => {
 
 	if (!('id' in req.params))
 	{
